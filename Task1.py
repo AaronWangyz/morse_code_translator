@@ -23,6 +23,7 @@
 # as the "key", and the corresponding English letter or number
 # as the "value"
 morse_dict = {
+
     # 26 English letters
     '01': 'A', '1000': 'B', '1010': 'C',
     '100': 'D', '0': 'E', '0010': 'F',
@@ -33,6 +34,7 @@ morse_dict = {
     '000': 'S', '1': 'T', '001': 'U',
     '0001': 'V', '011': 'W', '1001': 'X',
     '1011': 'Y', '1100': 'Z',
+
     # 10 numbers
     '11111': '0', '01111': '1', '00111': '2',
     '00011': '3', '00001': '4', '00000': '5',
@@ -40,8 +42,8 @@ morse_dict = {
     '11110': '9'
 }
 
-print("Structure of morse_dict: ")
 # print the morse code representation structure
+print("Structure of morse_dict: ")
 for keys, values in morse_dict.items():
     print('Morse Code: ', keys)
     print('Value: ', values, "\n")

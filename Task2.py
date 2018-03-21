@@ -1,10 +1,9 @@
 #########################################
 #                                       #
-# This file declares a regexp variable  #
-# that is used to validate user input,  #
-# if the input is invalid, the program  #
-# asks user to re-enter until it is     #
-# valid.                                #
+# This file declares a function called  #
+# "take_input" that prompts a guide of  #
+# input, takes user input, and returns  #
+# it.                                   #
 #                                       #
 #########################################
 #                                       #
@@ -17,27 +16,16 @@
 # Student ID: 2861 9943                 #
 # Email: ywan0072@student.monash.edu    #
 # Date Created: March 21, 2018          #
-# Last Modified: March 21, 2018         #
+# Last Modified: March 22, 2018         #
 #                                       #
 #########################################
+# valid_input = "^([01]+\*?)+$"
 
-import re
 
-# declare a variable contains the regexp of the valid input
-# the regexp will only take the format as follows:
-# 0-n 0 or 1s with a * separates them, the pattern appears at least one time
-
-# !!!want to improve the regexp here!!!
-valid_input = "^([01]+\*?)+$"
-
-# while the user input does not match the regexp of the valid input, ask user to re-enter:
-while True:
+# declare a function that takes user input and return the input
+def take_input():
     user_input = input("Please enter at least one morse code, "
                        "the morse code should be represent by 1 or 0, "
                        "each morse code should be separated "
                        "by a single asterisk (*): ")
-    if re.match(valid_input, user_input):
-        print("You entered: ", user_input, "\n\n")
-        break
-    else:
-        print("Invalid input! Please re-enter: \n")
+    return user_input
