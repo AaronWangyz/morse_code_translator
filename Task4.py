@@ -70,7 +70,8 @@
 #########################################
 # valid_input = "^([01]+\*?)+$"
 
-# import the previous built python files Task2.py and Task3.py
+# import the previous built python files Task1.py, Task2.py and Task3.py
+# from Task1 import print_structure
 import Task2
 import Task3
 import re
