@@ -70,8 +70,7 @@
 #########################################
 # valid_input = "^([01]+\*?)+$"
 
-# import the previous built python files Task1.py, Task2.py and Task3.py
-import Task1
+# import the previous built python files Task2.py and Task3.py
 import Task2
 import Task3
 import re
@@ -95,8 +94,6 @@ occ_dict = {
     "6": 0, "7": 0, "8": 0,
     "9": 0
 }
-
-Task1.print_structure()
 
 # combine the functions imported for Task2.py and Task3.py together,
 # keep taking and processing the user input until the input is an empty string
