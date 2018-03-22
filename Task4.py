@@ -53,7 +53,7 @@ occ_dict = {
     # 10 numbers
     "0": 0, "1": 0, "2": 0,
     "3": 0, "4": 0, "5": 0,
-    "6": 0, "4": 7, "8": 0,
+    "6": 0, "7": 0, "8": 0,
     "9": 0
 }
 
@@ -110,8 +110,9 @@ while True:
 
             # loop through the "occ_dict" and print its elements properly
             for keys, values in occ_dict.items():
-                print('Character: ', keys)
-                print('Occurrence: ', values, '\n')
+                if values != 0:
+                    print('Character: ', keys)
+                    print('Occurrence: ', values, '\n')
 
         # print message if all morse code entered were not translatable
         else:
