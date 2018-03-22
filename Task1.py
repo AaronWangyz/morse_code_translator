@@ -50,9 +50,8 @@ morse_dict = {
 }
 
 
-def print_structure():
-    # print the morse code representation structure
-    print("Structure of morse_dict: ")
-    for keys, values in morse_dict.items():
-        print('Morse Code: ', keys)
-        print('Value: ', values, "\n")
+# print the morse code representation structure
+print("Structure of morse_dict: ")
+for keys, values in morse_dict.items():
+    print('Morse Code: ', keys)
+    print('Value: ', values, "\n")
