@@ -11,6 +11,13 @@
 #                                       #
 #########################################
 #                                       #
+#                 Usage                 #
+# This file only contains dictionary    #
+# and function that will be used in     #
+# Task4.py.                             #
+#                                       #
+#########################################
+#                                       #
 # Author: Yezhen Wang                   #
 # Student ID: 2861 9943                 #
 # Email: ywan0072@student.monash.edu    #
@@ -42,8 +49,10 @@ morse_dict = {
     '11110': '9'
 }
 
-# print the morse code representation structure
-print("Structure of morse_dict: ")
-for keys, values in morse_dict.items():
-    print('Morse Code: ', keys)
-    print('Value: ', values, "\n")
+
+def print_structure():
+    # print the morse code representation structure
+    print("Structure of morse_dict: ")
+    for keys, values in morse_dict.items():
+        print('Morse Code: ', keys)
+        print('Value: ', values, "\n")

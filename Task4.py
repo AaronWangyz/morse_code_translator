@@ -23,6 +23,44 @@
 #                                       #
 #########################################
 #                                       #
+#                 Usage                 #
+# This file calls and uses functions    #
+# and variables declared in Task1.py,   #
+# Task2.py, and Task3.py.               #
+#                                       #
+# After the structure of "morse_dict"   #
+# been shown, system will prompt for    #
+# user input.                           #
+#                                       #
+# Enter your morse code now, use        #
+# asterisk (*) as delimiter between     #
+# characters.                           #
+#                                       #
+# Press "Enter" to continue, if invalid #
+# character/symbol was found in your    #
+# input, system will prompt for you to  #
+# re-enter.                             #
+#                                       #
+# If no invalid input was found, morse  #
+# code you just entered will be shown,  #
+# followed by the translated message,   #
+# and morse codes that were not able to #
+# be translated (if there's any).       #
+#                                       #
+# Then system will prompt for you to    #
+# enter the next series of morse codes. #
+#                                       #
+# To stop entering morse code, input an #
+# empty string (by directly press       #
+# "Enter" after system prompt for input,#
+# sometimes two "Enter"s are required). #
+#                                       #
+# Then an analysis of all the morse     #
+# code you entered will be generated    #
+# and displayed.                        #
+#                                       #
+#########################################
+#                                       #
 # Author: Yezhen Wang                   #
 # Student ID: 2861 9943                 #
 # Email: ywan0072@student.monash.edu    #
@@ -76,6 +114,7 @@ while True:
     # start analyze the occurrence of each character
     else:
         # declare a variable that stores a regexp statement will be used to limit user action
+        # regexp work as: one or many 0 or 1s, followed by zero or one asterisk. The pattern appears at least once.
         # !!! need improvement !!! #
         valid_input = "^([01]+\*?)+$"
 

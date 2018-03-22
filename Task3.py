@@ -27,6 +27,12 @@
 #                                       #
 #########################################
 #                                       #
+#                 Usage                 #
+# This file only contains a function    #
+# that will be used in Task4.py.        #
+#                                       #
+#########################################
+#                                       #
 # Author: Yezhen Wang                   #
 # Student ID: 2861 9943                 #
 # Email: ywan0072@student.monash.edu    #
