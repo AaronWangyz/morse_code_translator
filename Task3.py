@@ -61,7 +61,7 @@ def process_input(user_input):
         if split_element in morse_dict:
             valid_list.append(morse_dict[split_element])
         else:
-            valid_list.append("?")
+            # valid_list.append("?")
             if split_element not in invalid_list:
                 invalid_list.append(split_element)
 
