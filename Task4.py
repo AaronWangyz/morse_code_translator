@@ -6,8 +6,8 @@
 #                                       #
 # Then take the return result from      #
 # functions in Task2.py and Task3.py,   #
-# then take user input until it is an   #
-# empty string.                         #
+# then take user input until it's valid #
+# or its an empty string.               #
 #                                       #
 # Then analyze the occurrence of each   #
 # character (both "A-Z" and "0-9")      #
@@ -30,10 +30,12 @@
 # Last Modified: March 22, 2018         #
 #                                       #
 #########################################
+# valid_input = "^([01]+\*?)+$"
 
 # import the previous built python files Task2.py and Task3.py
 import Task2
 import Task3
+import re
 
 # create a dictionary contains each character as the "key"
 # and a number of occurrence as its "value"
@@ -63,31 +65,42 @@ while True:
     user_input = Task2.take_input()
 
     # check if user input is empty string,
-    # terminate the loop if it is
+    # terminate the script if it is
     if user_input == "":
-        break
+        quit()
 
     # if user input is not empty string,
     # start analyze the occurrence of each character
     else:
+        # declare a variable that stores a regexp statement will be used to limit user action
+        # !!! need improvement !!! #
+        valid_input = "^([01]+\*?)+$"
 
-        # declare a counter to check the content of "valid_list"
-        count = 0
+        # check if the user input matches the regexp
+        # if input is valid, keep execute the rest of the script
+        # if input is empty, terminate the script
+        # if input is invalid, prompt message ask user to re-enter until valid input is obtained
+        if re.match(valid_input, user_input):
+            print("\nYou entered: ", user_input, "\n\n")
+        elif user_input == "":
+            quit()
+        else:
+            while True:
+                user_input = input("Invalid input! Please re-enter: \n")
+                if re.match(valid_input, user_input):
+                    print("\nYou entered: ", user_input, "\n\n")
+                    break
+                elif user_input == "":
+                    quit()
 
         # pass "user_input" to Task3.process_input,
         # assign the return value of Task3.process_input (should be a list contains valid translations)
         # to "valid_list" variable for later use
         valid_list = Task3.process_input(user_input)
 
-        # check if all the elements in "valid_list" are "?"
-        # ("?" stands for untranslatable morse code)
-        for item in valid_list:
-            if item == "?":
-                count += 1
-
-        # check if the count get from above for loop is equal to the length of "valid_list"
-        # (equal means all morse code entered were not translatable)
-        if count != len(valid_list):
+        # check if the return value of Task3.process_input is a single "?"
+        # (a single "?" stands for all morse code entered were not translatable)
+        if valid_list != ["?"]:
 
             # loop through the "valid_list", once detect a match with the key in "occ_dict",
             # increment the corresponding value for 1

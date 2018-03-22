@@ -19,7 +19,6 @@
 # Last Modified: March 22, 2018         #
 #                                       #
 #########################################
-# valid_input = "^([01]+\*?)+$"
 
 
 # declare a function that takes user input and return the input
@@ -27,5 +26,5 @@ def take_input():
     user_input = input("Please enter at least one morse code, "
                        "the morse code should be represent by 1 or 0, "
                        "each morse code should be separated "
-                       "by a single asterisk (*): ")
+                       "by a single asterisk (*): \n")
     return user_input

@@ -65,8 +65,26 @@ def process_input(user_input):
             if split_element not in invalid_list:
                 invalid_list.append(split_element)
 
+    # declare a counter to check the content of "valid_list"
+    count = 0
+
+    # check if all the elements in "valid_list" are "?"
+    # ("?" stands for untranslatable morse code)
+    for item in valid_list:
+        if item == "?":
+            count += 1
+
+    # if not all elements in "valid_list" are "?",
     # convert "valid_list" to a string without delimiter
-    valid_result = "".join(valid_list)
+    # or,
+    # assign a single "?" for both "valid_list" and "valid_result"
+    # for easy handling in the future
+    if count != len(valid_list):
+        valid_result = "".join(valid_list)
+    else:
+        valid_list = ["?"]
+        valid_result = "?"
+
     # convert "invalid_list" to a string with ", " as delimiter
     invalid_result = ", ".join(invalid_list)
 
