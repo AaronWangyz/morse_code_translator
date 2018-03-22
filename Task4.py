@@ -32,8 +32,7 @@
 #########################################
 # valid_input = "^([01]+\*?)+$"
 
-# import the previous built python files Task1.py, Task2.py and Task3.py
-import Task1
+# import the previous built python files Task2.py and Task3.py
 import Task2
 import Task3
 import re
@@ -58,8 +57,6 @@ occ_dict = {
     "9": 0
 }
 
-Task1.print_structure()
-
 # combine the functions imported for Task2.py and Task3.py together,
 # keep taking and processing the user input until the input is an empty string
 while True:
@@ -70,7 +67,7 @@ while True:
     # check if user input is empty string,
     # terminate the script if it is
     if user_input == "":
-        break
+        quit()
 
     # if user input is not empty string,
     # start analyze the occurrence of each character
@@ -86,7 +83,7 @@ while True:
         if re.match(valid_input, user_input):
             print("\nYou entered: ", user_input, "\n\n")
         elif user_input == "":
-            break
+            quit()
         else:
             while True:
                 user_input = input("Invalid input! Please re-enter: \n")
@@ -94,7 +91,7 @@ while True:
                     print("\nYou entered: ", user_input, "\n\n")
                     break
                 elif user_input == "":
-                    break
+                    quit()
 
         # pass "user_input" to Task3.process_input,
         # assign the return value of Task3.process_input (should be a list contains valid translations)
@@ -111,13 +108,12 @@ while True:
                 if valid_element in occ_dict:
                     occ_dict[valid_element] += 1
 
+            # loop through the "occ_dict" and print its elements properly
+            for keys, values in occ_dict.items():
+                if values != 0:
+                    print('Character: ', keys)
+                    print('Occurrence: ', values, '\n')
+
         # print message if all morse code entered were not translatable
         else:
             print("No valid morse code!\n\n")
-
-
-# loop through the "occ_dict" and print its elements properly
-for keys, values in occ_dict.items():
-    if values != 0:
-        print('Character: ', keys)
-        print('Occurrence: ', values, '\n')
