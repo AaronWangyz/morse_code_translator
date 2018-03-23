@@ -1,48 +1,51 @@
-#########################################
-#                                       #
-# This file declares a function called  #
-# "process_input" that takes a param    #
-# called "user_input".                  #
-#                                       #
-# It also takes "morse_dict" built in   #
-# Task1.py by import function.          #
-#                                       #
-# Then split the "user_input" by "*"    #
-# and translate the morse code entered  #
-# by user to the corresponding message. #
-#                                       #
-# The invalid morse code entered will   #
-# be translated as "?" and the invalid  #
-# morse code will be printed out after  #
-# the message.                          #
-#                                       #
-# The list of valid translations,       #
-# "valid_list" will be the return value #
-# of function "process_input"           #
-#                                       #
-#########################################
-#                                       #
-# The program was implemented in        #
-# python 3.6.4, under PyCharm Edu IDE.  #
-#                                       #
-#########################################
-#                                       #
-#                 Usage                 #
-# This file only contains a function    #
-# that will be used in Task4.py.        #
-#                                       #
-#########################################
-#                                       #
-# Author: Yezhen Wang                   #
-# Student ID: 2861 9943                 #
-# Email: ywan0072@student.monash.edu    #
-# Date Created: March 21, 2018          #
-# Last Modified: March 22, 2018         #
-#                                       #
-#########################################
+#######################################################################
+#                                                                     #
+# This file declares a function called "process_input" that takes a   #
+# param called "user_input".                                          #
+#                                                                     #
+# It also takes "morse_dict" built in Task1.py by import function.    #
+#                                                                     #
+# Then split the "user_input" by "*" and translate the morse code     #
+# entered by user to the corresponding message.                       #
+#                                                                     #
+# The invalid morse code entered will be translated as "?" and the    #
+# invalid morse code will be printed out after the message.           #
+#                                                                     #
+# The list of valid translations, "valid_list" will be the return     #
+# value of function "process_input"                                   #
+#                                                                     #
+#######################################################################
+#                                                                     #
+# The program was implemented in python 3.6.4, under PyCharm Edu IDE. #
+#                                                                     #
+#######################################################################
+#                                                                     #
+#                               Usage                                 #
+# Just like Task2.py, the program will prompt for user input after it #
+# is executed, and user can keep entering text until an empty input is#
+# received.                                                           #
+#                                                                     #
+# Instead of only display what user entered, this program will also   #
+# try to translate the morse code entered by user (assuming user are  #
+# actually entering morse codes), display the translated message, and #
+# list the user inputs that were not translatable.                    #
+#                                                                     #
+# In this stage, untranslatable inputs will be displayed as "?" in    #
+# the translated message.                                             #
+#                                                                     #
+#######################################################################
+#                                                                     #
+# Author: Yezhen Wang                                                 #
+# Student ID: 2861 9943                                               #
+# Email: ywan0072@student.monash.edu                                  #
+# Date Created: March 21, 2018                                        #
+# Last Modified: March 23, 2018, 01:38 PM                             #
+#                                                                     #
+#######################################################################
 
 # import morse_dict and user_input from previous python files
 from Task1 import morse_dict
+import Task2
 
 
 # create the function that processes the parameter passed to it
@@ -95,9 +98,27 @@ def process_input(user_input):
     invalid_result = ", ".join(invalid_list)
 
     # print the translated message
-    print("Translated message: ", valid_result, "\n\n")
+    print("Translated message: ", valid_result, "\n")
     # print the invalid inputs if there is any
     if len(invalid_result) > 0:
-        print("These morse codes were not able to be translated: ", invalid_result, "\n\n")
+        print("These morse codes were not able to be translated: ", invalid_result, "\n")
 
     return valid_list
+
+
+# run demo function that fulfills the output requirement of Task3
+if __name__ == '__main__':
+    while True:
+        # assign the return value of Task2.take_input (should just be an input from user)
+        # to "user_input" variable
+        demo_input = Task2.take_input()
+
+        # check if user input is empty string,
+        # stop the loop if it is
+        if demo_input == "":
+            break
+
+        # translate the user input if its not empty
+        else:
+            print("\nYou entered: ", demo_input, "\n")
+            process_input(demo_input)

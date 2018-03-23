@@ -1,30 +1,29 @@
-#########################################
-#                                       #
-# This file creates a python dictionary #
-# called "morse_dict" that will be used #
-# in the later tasks.                   #
-#                                       #
-#########################################
-#                                       #
-# The program was implemented in        #
-# python 3.6.4, under PyCharm Edu IDE.  #
-#                                       #
-#########################################
-#                                       #
-#                 Usage                 #
-# This file only contains dictionary    #
-# and function that will be used in     #
-# Task4.py.                             #
-#                                       #
-#########################################
-#                                       #
-# Author: Yezhen Wang                   #
-# Student ID: 2861 9943                 #
-# Email: ywan0072@student.monash.edu    #
-# Date Created: March 21, 2018          #
-# Last Modified: March 21, 2018         #
-#                                       #
-#########################################
+#######################################################################
+#                                                                     #
+# This file contains a morse code dictionary called "morse_dict" that #
+# will be used in Task3.py, and a function called "print_structure"   #
+# that will be used in Task4.py and the demo function here in this    #
+# file.
+#                                                                     #
+#######################################################################
+#                                                                     #
+# The program was implemented in python 3.6.4, under PyCharm Edu IDE. #
+#                                                                     #
+#######################################################################
+#                                                                     #
+#                               Usage                                 #
+# Simply execute this script, the structure of "morse_dict" will be   #
+# displayed.                                                          #
+#                                                                     #
+#######################################################################
+#                                                                     #
+# Author: Yezhen Wang                                                 #
+# Student ID: 2861 9943                                               #
+# Email: ywan0072@student.monash.edu                                  #
+# Date Created: March 21, 2018                                        #
+# Last Modified: March 23, 2018, 01:26 PM                             #
+#                                                                     #
+#######################################################################
 
 # declare a dictionary contains the morse code (in 1 and 0s)
 # as the "key", and the corresponding English letter or number
@@ -51,7 +50,13 @@ morse_dict = {
 
 
 # print the morse code representation structure
-print("Structure of morse_dict: ")
-for keys, values in morse_dict.items():
-    print('Morse Code: ', keys)
-    print('Value: ', values, "\n")
+def print_structure():
+    print("Structure of morse_dict: ")
+    for keys, values in morse_dict.items():
+        print('Morse Code: ', keys)
+        print('Value: ', values, "\n")
+
+
+# make this file executable
+if __name__ == "__main__":
+    print_structure()
