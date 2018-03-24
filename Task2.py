@@ -18,6 +18,12 @@
 # the user is allowed to keep enter contents until an empty input is  #
 # received which is considered as the sign of end of input.           #
 #                                                                     #
+# Regular expression is introduced in this stage to limit #the user   #
+# action. The allowed inputs from user are limited in 1, 0 and *, plus#
+# user has to follow the pattern of                                   #
+#               "digit(s)*digit(s)*digit(s)......(*)"                 #
+# which means one and only one asterisk is allowed as delimiter.      #
+#                                                                     #
 # The program also displays the content received from user every time #
 # user entered something and hit "Enter".                             #
 #                                                                     #
@@ -27,7 +33,7 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: March 21, 2018                                        #
-# Last Modified: March 23, 2018, 01:32 PM                             #
+# Last Modified: March 24, 2018, 03:15 PM                             #
 #                                                                     #
 #######################################################################
 
@@ -66,7 +72,7 @@ def recursive_input():
                     print("\nYou entered: ", user_input, "\n")
                     break
                 elif user_input == "":
-                    break
+                    quit()
 
         # print the valid input
         else:

@@ -26,12 +26,12 @@
 # received.                                                           #
 #                                                                     #
 # Instead of only display what user entered, this program will also   #
-# try to translate the morse code entered by user (assuming user are  #
-# actually entering morse codes), display the translated message, and #
-# list the user inputs that were not translatable.                    #
+# try to translate the morse code entered by user, display the        #
+# translated message, and list the user inputs that were not          #
+# translatable.                                                       #
 #                                                                     #
-# In this stage, untranslatable inputs will be displayed as "?" in    #
-# the translated message.                                             #
+# Valid but untranslatable inputs will be displayed as "?" in the     #
+# translated message.                                                 #
 #                                                                     #
 #######################################################################
 #                                                                     #
@@ -39,13 +39,14 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: March 21, 2018                                        #
-# Last Modified: March 23, 2018, 01:38 PM                             #
+# Last Modified: March 24, 2018, 03:15 PM                             #
 #                                                                     #
 #######################################################################
 
 # import morse_dict and user_input from previous python files
 from Task1 import morse_dict
 import Task2
+import re
 
 
 # create the function that processes the parameter passed to it
@@ -108,17 +109,60 @@ def process_input(user_input):
 
 # run demo function that fulfills the output requirement of Task3
 if __name__ == '__main__':
+    # declare a counter for loop control
+    count = 0
     while True:
+
+        # for the first loop (count = 0),
         # assign the return value of Task2.take_input (should just be an input from user)
-        # to "user_input" variable
-        demo_input = Task2.take_input()
+        # to "user_input" variable for later use
+        if count == 0:
+            user_input = Task2.take_input()
+
+        # for later loops (count > 0), break the loop if the user input is empty
+        elif count > 0 and user_input == "":
+            break
+
+        # keep taking user input if its not empty
+        else:
+            user_input = Task2.take_input()
 
         # check if user input is empty string,
         # stop the loop if it is
-        if demo_input == "":
+        if user_input == "":
             break
 
-        # translate the user input if its not empty
+        # if user input is not empty string,
+        # start analyze the occurrence of each character
         else:
-            print("\nYou entered: ", demo_input, "\n")
-            process_input(demo_input)
+            # declare a variable that stores a regexp statement will be used to limit user action
+            # regexp work as: one or many 0 or 1s, followed by zero or one asterisk. The pattern appears at least once.
+            valid_input = "^([01]+\*?)+$"
+
+            # check if the user input matches the regexp
+            # if input is valid, keep execute the rest of the script
+            if re.match(valid_input, user_input):
+                print("\nYou entered: ", user_input, "\n")
+
+            # if input is empty, stop the loop
+            elif user_input == "":
+                break
+
+            # if input is invalid, prompt message ask user to re-enter until valid input is obtained
+            else:
+                while True:
+                    if re.match(valid_input, user_input):
+                        print("\nYou entered: ", user_input, "\n")
+                        break
+                    elif user_input == "":
+                        break
+                    else:
+                        user_input = input("Invalid input! Please re-enter: \n")
+
+            # pass "user_input" to Task3.process_input,
+            # assign the return value of Task3.process_input (should be a list contains valid translations)
+            # to "valid_list" variable for later use
+            valid_list = process_input(user_input)
+
+            # increment the counter after each loop
+            count += 1

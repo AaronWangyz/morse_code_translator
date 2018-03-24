@@ -23,12 +23,6 @@
 # Task3.py, that user is asked to keep entering until an empty input  #
 # is received.                                                        #
 #                                                                     #
-# However, regular expression is introduced in this stage to limit    #
-# the user action. The allowed inputs from user are limited in 1, 0   #
-# and *, plus user has to follow the pattern of                       #
-#               "digit(s)*digit(s)*digit(s)......(*)"                 #
-# which means one and only one asterisk is allowed as delimiter.      #
-#                                                                     #
 # When the sign of end of input is found (a.k.a. empty input), a      #
 # report will be generated showing the occurrence of the characters   #
 # that were entered by the user.                                      #
@@ -39,7 +33,7 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: March 21, 2018                                        #
-# Last Modified: March 23, 2018, 01:47 PM                             #
+# Last Modified: March 24, 2018, 03:15 PM                             #
 #                                                                     #
 #######################################################################
 
@@ -69,14 +63,28 @@ occ_dict = {
     "9": 0
 }
 
+# declare a counter for loop control
+count = 0
+
 Task1.print_structure()
 
 # combine the functions imported for Task2.py and Task3.py together,
 # keep taking and processing the user input until the input is an empty string
 while True:
+
+    # for the first loop (count = 0),
     # assign the return value of Task2.take_input (should just be an input from user)
     # to "user_input" variable for later use
-    user_input = Task2.take_input()
+    if count == 0:
+        user_input = Task2.take_input()
+
+    # for later loops (count > 0), break the loop if the user input is empty
+    elif count > 0 and user_input == "":
+        break
+
+    # keep taking user input if its not empty
+    else:
+        user_input = Task2.take_input()
 
     # check if user input is empty string,
     # stop the loop if it is
@@ -102,12 +110,13 @@ while True:
         # if input is invalid, prompt message ask user to re-enter until valid input is obtained
         else:
             while True:
-                user_input = input("Invalid input! Please re-enter: \n")
                 if re.match(valid_input, user_input):
                     print("\nYou entered: ", user_input, "\n")
                     break
                 elif user_input == "":
                     break
+                else:
+                    user_input = input("Invalid input! Please re-enter: \n")
 
         # pass "user_input" to Task3.process_input,
         # assign the return value of Task3.process_input (should be a list contains valid translations)
@@ -127,6 +136,9 @@ while True:
         # print message if all morse code entered were not translatable
         else:
             print("No valid morse code!\n")
+
+        # increment the counter after each loop
+        count += 1
 
 
 # loop through the "occ_dict" and print its elements properly
