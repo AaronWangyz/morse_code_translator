@@ -31,6 +31,8 @@
 #                                                                     #
 #######################################################################
 
+import re
+
 
 # declare a function that takes user input and return the input
 # this is the function that will be used in Task3.py and Task4.py
@@ -44,10 +46,29 @@ def take_input():
 
 # demo function to fulfill the output requirement of Task2
 def recursive_input():
+
+    # regexp variable for input check
+    valid_input = "^([01]+\*?)+$"
+
+    # take user input until empty input is received
     while True:
         user_input = take_input()
+
+        # stop the loop if empty string is received
         if user_input == "":
             break
+
+        # validate the input if input is not empty
+        elif not re.match(valid_input, user_input):
+            while True:
+                user_input = input("Invalid input! Please re-enter: \n")
+                if re.match(valid_input, user_input):
+                    print("\nYou entered: ", user_input, "\n")
+                    break
+                elif user_input == "":
+                    break
+
+        # print the valid input
         else:
             print("You entered: ", user_input)
 

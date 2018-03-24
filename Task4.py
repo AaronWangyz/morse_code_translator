@@ -88,17 +88,18 @@ while True:
     else:
         # declare a variable that stores a regexp statement will be used to limit user action
         # regexp work as: one or many 0 or 1s, followed by zero or one asterisk. The pattern appears at least once.
-        # !!! need improvement !!! #
         valid_input = "^([01]+\*?)+$"
 
         # check if the user input matches the regexp
         # if input is valid, keep execute the rest of the script
-        # if input is empty, stop the loop
-        # if input is invalid, prompt message ask user to re-enter until valid input is obtained
         if re.match(valid_input, user_input):
             print("\nYou entered: ", user_input, "\n")
+
+        # if input is empty, stop the loop
         elif user_input == "":
             break
+
+        # if input is invalid, prompt message ask user to re-enter until valid input is obtained
         else:
             while True:
                 user_input = input("Invalid input! Please re-enter: \n")
@@ -131,5 +132,4 @@ while True:
 # loop through the "occ_dict" and print its elements properly
 for keys, values in occ_dict.items():
     if values != 0:
-        print('Character: ', keys)
-        print('Occurrence: ', values)
+        print("Character ", keys, " appeared ", values, "times.\n")
