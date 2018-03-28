@@ -33,7 +33,7 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: March 21, 2018                                        #
-# Last Modified: March 24, 2018, 03:15 PM                             #
+# Last Modified: March 28, 2018, 12:45 PM                             #
 #                                                                     #
 #######################################################################
 
@@ -42,26 +42,12 @@ import Task1
 import Task2
 import Task3
 import re
+from collections import Counter
 
 # create a dictionary contains each character as the "key"
 # and a number of occurrence as its "value"
-occ_dict = {
-    # 26 English letters
-    "A": 0, "B": 0, "C": 0,
-    "D": 0, "E": 0, "F": 0,
-    "G": 0, "H": 0, "I": 0,
-    "J": 0, "K": 0, "L": 0,
-    "M": 0, "N": 0, "O": 0,
-    "P": 0, "Q": 0, "R": 0,
-    "S": 0, "T": 0, "U": 0,
-    "V": 0, "W": 0, "X": 0,
-    "Y": 0, "Z": 0,
-    # 10 numbers
-    "0": 0, "1": 0, "2": 0,
-    "3": 0, "4": 0, "5": 0,
-    "6": 0, "7": 0, "8": 0,
-    "9": 0
-}
+occ_dict = {}
+occ_total = {}
 
 # declare a counter for loop control
 count = 0
@@ -132,16 +118,32 @@ while True:
             for valid_element in valid_list:
                 if valid_element in occ_dict:
                     occ_dict[valid_element] += 1
+                else:
+                    occ_dict[valid_element] = 1
+
+            # print the occurrence for this single loop
+            for keys, values in occ_dict.items():
+                if values != 0:
+                    print("Character ", keys, " appeared ", values, "times.\n")
 
         # print message if all morse code entered were not translatable
         else:
             print("No valid morse code!\n")
 
+        # utilize "Counter" class to summarize the occurrence
+        dict_counter = Counter(occ_dict)
+        total_counter = Counter(occ_total)
+        occ_total = dict(dict_counter + total_counter)
+
+        # data already moved to "occ_total" so clear the "occ_dict" for next loop
+        occ_dict.clear()
+
         # increment the counter after each loop
         count += 1
 
 
-# loop through the "occ_dict" and print its elements properly
-for keys, values in occ_dict.items():
+# loop through the "occ_total" and print its elements properly
+print("Final Occurrence Analysis: \n")
+for keys, values in occ_total.items():
     if values != 0:
         print("Character ", keys, " appeared ", values, "times.\n")

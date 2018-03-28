@@ -44,9 +44,9 @@
 #######################################################################
 
 # import morse_dict and user_input from previous python files
-from Task1 import morse_dict
 import Task2
 import re
+from Task1 import morse_dict
 
 
 # create the function that processes the parameter passed to it
